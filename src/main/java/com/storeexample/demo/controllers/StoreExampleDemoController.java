@@ -1,4 +1,4 @@
-package com.storeexample.controllers;
+package com.storeexample.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
