@@ -15,4 +15,9 @@ public class StoreExampleDemoController {
     public String getHomePage() {
         return "index.html";
     }
+
+    @GetMapping(value = "/catalog")
+    public String getCatalog() {
+        return "catalog.html";
+    }
 }
