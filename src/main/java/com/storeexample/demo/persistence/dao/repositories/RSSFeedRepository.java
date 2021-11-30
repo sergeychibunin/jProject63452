@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 @Transactional
 public interface RSSFeedRepository extends CrudRepository<RSSFeed, Long> {
-    List<RSSFeed> allRssFeeds();
 }

@@ -13,8 +13,8 @@
 </ul>
 
 <h2>Items</h2>
-<!--  /*@thymesVar id="rss-feeds" type="java.util.List<RSSFeed>"*/-->
-<ul th:each="feed : ${rss-feeds}">
+<!--  /*@thymesVar id="rssFeeds" type="java.util.List<RSSFeed>"*/-->
+<ul th:each="feed : ${rssFeeds}">
   <li th:text="${feed.name}"></li>
 </ul>
 </body>

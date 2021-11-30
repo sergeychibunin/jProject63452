@@ -23,7 +23,7 @@ public class StoreExampleDemoController {
 
     @GetMapping(value = "/catalog")
     public ModelAndView getCatalog(ModelAndView modelAndView) {
-        modelAndView.addObject("rss-feeds", rssFeedService.listAllRSSFeeds());
+        modelAndView.addObject("rssFeeds", rssFeedService.listAllRSSFeeds());
         modelAndView.setViewName("catalog");
         return modelAndView;
     }
