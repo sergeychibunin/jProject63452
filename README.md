@@ -8,7 +8,6 @@ The store can sell RSS feeds.
 
 ## TODO
 
-- Data
 - Testing
 - AOP
 - RESTful
