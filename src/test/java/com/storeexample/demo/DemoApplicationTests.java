@@ -35,6 +35,7 @@ class DemoApplicationTests {
 	@Test
 	public void getCatalogPage() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/catalog"))
-				.andExpect(MockMvcResultMatchers.status().isOk());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.view().name("catalog"));
 	}
 }
