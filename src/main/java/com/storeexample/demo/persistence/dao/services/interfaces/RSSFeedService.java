@@ -5,5 +5,5 @@ import com.storeexample.demo.persistence.model.RSSFeed;
 import java.util.List;
 
 public interface RSSFeedService {
-    List<RSSFeed> listAllRSSFeeds();
+    List<RSSFeed> listAllRSSFeeds() throws InterruptedException;
 }

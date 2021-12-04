@@ -26,7 +26,7 @@ public class StoreExampleDemoRestController {
     }
 
     @GetMapping("/rssfeeds")
-    public List<RSSFeed> getAllRssFeeds() {
+    public List<RSSFeed> getAllRssFeeds() throws InterruptedException {
         return rssFeedService.listAllRSSFeeds();
     }
 }

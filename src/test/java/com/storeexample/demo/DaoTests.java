@@ -29,7 +29,7 @@ public class DaoTests {
     }
 
     @Test
-    public void getAllRSSFeeds() {
+    public void getAllRSSFeeds() throws InterruptedException {
         Mockito.when(rssFeedRepository.findAll())
                 .thenReturn(rssFeedList);
 

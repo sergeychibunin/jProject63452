@@ -22,7 +22,7 @@ public class StoreExampleDemoController {
     }
 
     @GetMapping(value = "/catalog")
-    public ModelAndView getCatalog(ModelAndView modelAndView) {
+    public ModelAndView getCatalog(ModelAndView modelAndView) throws InterruptedException {
         modelAndView.addObject("rssFeeds", rssFeedService.listAllRSSFeeds());
         modelAndView.setViewName("catalog");
         return modelAndView;
