@@ -27,4 +27,10 @@ public class StoreExampleDemoController {
         modelAndView.setViewName("catalog");
         return modelAndView;
     }
+
+    @GetMapping(value = "/exception")
+    public String getException() {
+        String pageTitle = null;
+        return pageTitle.toUpperCase();
+    }
 }

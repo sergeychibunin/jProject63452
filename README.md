@@ -8,4 +8,5 @@ The store can sell RSS feeds.
 
 ## TODO
 
-- AOP
+- REST. Catalog
+-- pagination, sorting, search
