@@ -9,4 +9,5 @@ The store can sell RSS feeds.
 ## TODO
 
 - REST. Catalog
+-- https://google.github.io/styleguide/jsoncstyleguide.xml#Reserved_Property_Names_for_Paging
 -- pagination, sorting, search
