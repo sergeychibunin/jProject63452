@@ -1,0 +1,15 @@
+@startuml
+
+entity RSSFeed {
+    * id : number <<generated>> PK
+    --
+    * name : text
+}
+note left
+    There's an entity for storing an RSS feed.
+end note
+note right of RSSFeed::name
+    There's the name of an RSS feed.
+end note
+
+@enduml
