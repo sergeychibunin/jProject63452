@@ -18,6 +18,7 @@ public class RSSFeed {
     private long id;
 
     private String name;
+    private Boolean isPublished;
 
     public RSSFeed() {
 
