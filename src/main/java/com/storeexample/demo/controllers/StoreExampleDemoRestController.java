@@ -31,14 +31,19 @@ public class StoreExampleDemoRestController {
     }
 
     @GetMapping("/rssfeeds")
-    public List<RSSFeed> getAllRssFeeds(@RequestParam(value = "search") String search) throws InterruptedException {
-        RSSFeedSpecificationsBuilder specificationsBuilder = new RSSFeedSpecificationsBuilder();
-        Pattern pattern = Pattern.compile("(\\w+?)(:)(\\w+?),");
-        Matcher matcher = pattern.matcher(search + ",");
-        while (matcher.find()) {
-            specificationsBuilder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+    public List<RSSFeed> getAllRssFeeds(@RequestParam(value = "search", required = false) String search)
+            throws InterruptedException {
+
+        Specification<RSSFeed> spec = null;
+        if (search != null) {
+            RSSFeedSpecificationsBuilder specificationsBuilder = new RSSFeedSpecificationsBuilder();
+            Pattern pattern = Pattern.compile("(\\w+?)(:)(\\w+?),");
+            Matcher matcher = pattern.matcher(search + ",");
+            while (matcher.find()) {
+                specificationsBuilder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+            }
+            spec = specificationsBuilder.build();
         }
-        Specification<RSSFeed> spec = specificationsBuilder.build();
-        return rssFeedService.listAllRSSFeeds();
+        return rssFeedService.listAllRSSFeeds(spec);
     }
 }

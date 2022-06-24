@@ -25,12 +25,11 @@ public class RSSFeedSpecificationsBuilder {
             return null;
         }
 
-        List<Specification> specs = params.stream().map(RSSFeedSpecification::new).collect(Collectors.toList());
+        List<Specification<RSSFeed>> specs = params.stream().map(RSSFeedSpecification::new).collect(Collectors.toList());
 
-        Specification result = specs.get(0);
+        Specification<RSSFeed> result = specs.get(0);
         for (int i = 1; i < params.size(); i++) {
-            result = params.get(i).isOrPredicate()
-                    ? Specification.where(result).or(specs.get(i)) : Specification.where(result).and(specs.get(i));
+            result = Specification.where(result).and(specs.get(i));
         }
         return result;
     }
