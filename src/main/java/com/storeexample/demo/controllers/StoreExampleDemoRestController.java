@@ -4,6 +4,8 @@ import com.storeexample.demo.persistence.dao.services.interfaces.RSSFeedService;
 import com.storeexample.demo.persistence.dao.specifications.RSSFeedSpecificationsBuilder;
 import com.storeexample.demo.persistence.model.RSSFeed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +33,14 @@ public class StoreExampleDemoRestController {
     }
 
     @GetMapping("/rssfeeds")
-    public List<RSSFeed> getAllRssFeeds(@RequestParam(value = "search", required = false) String search)
-            throws InterruptedException {
+    public Page<RSSFeed> getAllRssFeeds(
+            @RequestParam(value = "search", required = false) String search, Pageable pageable
+    ) throws InterruptedException {
 
         Specification<RSSFeed> spec = null;
         if (search != null) {
             RSSFeedSpecificationsBuilder specificationsBuilder = new RSSFeedSpecificationsBuilder();
+            // TODO fix for cyrillic letters
             Pattern pattern = Pattern.compile("(\\w+?)(:)(\\w+?),");
             Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
@@ -44,6 +48,7 @@ public class StoreExampleDemoRestController {
             }
             spec = specificationsBuilder.build();
         }
-        return rssFeedService.listAllRSSFeeds(spec);
+
+        return rssFeedService.listAllRSSFeeds(spec, pageable);
     }
 }
