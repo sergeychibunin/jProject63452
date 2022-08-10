@@ -51,4 +51,9 @@ public class StoreExampleDemoRestController {
 
         return rssFeedService.listAllRSSFeeds(spec, pageable);
     }
+
+    @GetMapping("/rssfeeds/odd-items")
+    public List<RSSFeed> getAllOddRssFeeds() {
+        return rssFeedService.listAllOddRSSFeeds();
+    }
 }

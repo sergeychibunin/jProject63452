@@ -31,4 +31,9 @@ public class RSSFeedServiceImpl implements RSSFeedService {
         Thread.sleep(1000L);
         return rssFeedRepository.findAll(specification, pageable);
     }
+
+    @Override
+    public List<RSSFeed> listAllOddRSSFeeds() {
+        return rssFeedRepository.getOddItems();
+    }
 }
