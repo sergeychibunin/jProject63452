@@ -12,4 +12,28 @@ note right of RSSFeed::name
     There's the name of an RSS feed.
 end note
 
+entity Store {
+    * id : number <<generated>> PK
+    --
+    * name : text
+}
+
+entity Order {
+    * id : number <<generated>> PK
+    --
+    * store_id : number FK
+    * created_at : date
+}
+
+entity OrderPosition {
+    * id : number <<generated>> PK
+    --
+    * order_id : number FK
+    * rssfeed_id : number FK
+}
+
+Store ||--o{ Order
+Order ||--|{ OrderPosition
+OrderPosition ||--|| RSSFeed
+
 @enduml

@@ -7,7 +7,5 @@ The store can sell RSS feeds.
 # Development
 
 ## TODO
+- Do the DB schema more complex (Igor)
 
-- REST. Catalog
--- https://google.github.io/styleguide/jsoncstyleguide.xml#Reserved_Property_Names_for_Paging
--- pagination, sorting, search
