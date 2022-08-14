@@ -1,6 +1,7 @@
 package com.storeexample.demo.persistence.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -12,7 +13,8 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class RSSFeed {
+@NoArgsConstructor
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +22,4 @@ public class RSSFeed {
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private Boolean isPublished;
-
-    public RSSFeed() {
-
-    }
-
-    public RSSFeed(String name) {
-        this.name = name;
-    }
 }
