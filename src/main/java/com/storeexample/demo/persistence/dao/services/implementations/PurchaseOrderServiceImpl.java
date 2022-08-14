@@ -1,5 +1,6 @@
 package com.storeexample.demo.persistence.dao.services.implementations;
 
+import com.storeexample.demo.exceptions.PurchaseOrderNotFoundException;
 import com.storeexample.demo.persistence.dao.repositories.PurchaseOrderRepository;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderService;
 import com.storeexample.demo.persistence.model.PurchaseOrder;
@@ -19,5 +20,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public Page<PurchaseOrder> listAll(Pageable pageable) {
         return repository.findAll(pageable);
+    }
+
+    @Override
+    public PurchaseOrder get(Long id) {
+        return repository.findById(id).orElseThrow(() -> new PurchaseOrderNotFoundException(id));
     }
 }
