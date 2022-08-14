@@ -9,4 +9,6 @@ public interface PurchaseOrderService {
     Page<PurchaseOrder> listAll(Pageable pageable);
 
     PurchaseOrder get(Long id);
+
+    PurchaseOrder create(PurchaseOrder newOrder);
 }

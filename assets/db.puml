@@ -33,7 +33,7 @@ entity OrderPosition {
 }
 
 Store ||--o{ Order
-Order ||--|{ OrderPosition
+Order ||--o{ OrderPosition
 OrderPosition ||--|| RSSFeed
 
 @enduml

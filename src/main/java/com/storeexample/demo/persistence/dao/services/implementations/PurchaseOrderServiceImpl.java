@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
@@ -25,5 +27,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public PurchaseOrder get(Long id) {
         return repository.findById(id).orElseThrow(() -> new PurchaseOrderNotFoundException(id));
+    }
+
+    @Override
+    public PurchaseOrder create(PurchaseOrder newOrder) {
+        newOrder.setCreatedAt(ZonedDateTime.now());
+        return repository.save(newOrder);
     }
 }

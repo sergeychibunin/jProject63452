@@ -24,5 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .mvcMatchers("/")
                 .permitAll();
+
+        http.cors().and().csrf().disable();
     }
 }
