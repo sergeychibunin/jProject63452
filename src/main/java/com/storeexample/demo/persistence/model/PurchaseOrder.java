@@ -18,7 +18,7 @@ import java.time.ZonedDateTime;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Order {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

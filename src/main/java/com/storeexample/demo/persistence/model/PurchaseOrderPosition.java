@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 @Setter
 @Entity
 @NoArgsConstructor
-public class OrderPosition {
+public class PurchaseOrderPosition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class OrderPosition {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    private PurchaseOrder purchaseOrder;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "rssfeed_id", nullable = false)
