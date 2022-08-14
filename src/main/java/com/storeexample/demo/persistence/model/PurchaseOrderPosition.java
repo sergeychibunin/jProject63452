@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -27,7 +26,7 @@ public class PurchaseOrderPosition {
     @JoinColumn(name = "order_id", nullable = false)
     private PurchaseOrder purchaseOrder;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "rssfeed_id", nullable = false)
     private RSSFeed rssFeed;
 }
