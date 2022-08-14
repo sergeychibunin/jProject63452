@@ -27,7 +27,7 @@ public class PurchaseOrder {
     @Column(nullable = false)
     private ZonedDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 }
