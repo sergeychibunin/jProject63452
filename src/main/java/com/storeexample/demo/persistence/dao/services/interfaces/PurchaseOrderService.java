@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface PurchaseOrderService {
 
+    void delete(Long id);
+
     Page<PurchaseOrder> listAll(Pageable pageable);
 
     PurchaseOrder get(Long id);

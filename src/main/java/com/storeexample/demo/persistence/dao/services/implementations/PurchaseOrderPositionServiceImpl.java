@@ -16,4 +16,9 @@ public class PurchaseOrderPositionServiceImpl implements PurchaseOrderPositionSe
     public PurchaseOrderPosition create(PurchaseOrderPosition newPosition) {
         return repository.save(newPosition);
     }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

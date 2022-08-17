@@ -5,4 +5,6 @@ import com.storeexample.demo.persistence.model.PurchaseOrderPosition;
 public interface PurchaseOrderPositionService {
 
     PurchaseOrderPosition create(PurchaseOrderPosition newPosition);
+
+    void delete(Long id);
 }

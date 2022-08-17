@@ -20,6 +20,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     private PurchaseOrderRepository repository;
 
     @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
     public Page<PurchaseOrder> listAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
