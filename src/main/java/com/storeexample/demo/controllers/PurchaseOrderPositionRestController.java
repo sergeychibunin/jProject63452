@@ -3,8 +3,10 @@ package com.storeexample.demo.controllers;
 import com.storeexample.demo.controllers.requests.PurchaseOrderPositionRequest;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderPositionService;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderService;
+import com.storeexample.demo.persistence.dao.services.interfaces.RSSFeedService;
 import com.storeexample.demo.persistence.model.PurchaseOrder;
 import com.storeexample.demo.persistence.model.PurchaseOrderPosition;
+import com.storeexample.demo.persistence.model.RSSFeed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +25,16 @@ public class PurchaseOrderPositionRestController {
     @Autowired
     private PurchaseOrderService orderService;
 
+    @Autowired
+    private RSSFeedService rssFeedService;
+
     @PostMapping("/purchase-order/position")
     public PurchaseOrderPosition create(@RequestBody PurchaseOrderPositionRequest newPosition) {
         PurchaseOrder order = orderService.get(newPosition.getOrder());
+        RSSFeed rssFeed = rssFeedService.get(newPosition.getRssfeed());
         PurchaseOrderPosition position = new PurchaseOrderPosition();
-        position.setPurchaseOrder();
-        return service.create(newPosition);
+        position.setPurchaseOrder(order);
+        position.setRssFeed(rssFeed);
+        return positionService.create(position);
     }
 }

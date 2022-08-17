@@ -8,6 +8,8 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.List;
 
 public interface RSSFeedService {
+
+    RSSFeed get(Long id);
     Page<RSSFeed> listAllRSSFeeds(Specification<RSSFeed> specification, Pageable paging) throws InterruptedException;
 
     List<RSSFeed> listAllOddRSSFeeds();

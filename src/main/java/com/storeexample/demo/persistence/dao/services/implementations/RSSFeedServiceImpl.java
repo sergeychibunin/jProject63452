@@ -23,6 +23,11 @@ public class RSSFeedServiceImpl implements RSSFeedService {
         this.rssFeedRepository = rssFeedRepository;
     }
 
+    @Override
+    public RSSFeed get(Long id) {
+        return rssFeedRepository.findById(id).orElse(null);
+    }
+
     @Cacheable("rssFeeds")
     @Override
     public Page<RSSFeed> listAllRSSFeeds(Specification<RSSFeed> specification, Pageable pageable)
