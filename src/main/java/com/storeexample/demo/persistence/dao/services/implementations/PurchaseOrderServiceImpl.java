@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
@@ -25,8 +26,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public Page<PurchaseOrder> listAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Page<PurchaseOrder> listAll(Specification<PurchaseOrder> specification, Pageable pageable) {
+        return repository.findAll(specification, pageable);
     }
 
     @Override
