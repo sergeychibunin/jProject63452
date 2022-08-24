@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.ZonedDateTime;
@@ -19,8 +20,15 @@ public class PurchaseOrderSpecification implements Specification<PurchaseOrder> 
     @Override
     public Predicate toPredicate(Root<PurchaseOrder> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         if (criteria.getOperation().equalsIgnoreCase(":")) {
-            if (root.get(criteria.getKey()).getJavaType() == Store.class) {
-                return criteriaBuilder.equal(root.get(criteria.getKey()), criteria.getValue());
+            // related attribute
+            if (criteria.getKey().indexOf(".") > 0) {
+                String[] relatedAttributeKey = criteria.getKey().split("\\.");
+                if (root.get(relatedAttributeKey[0]).getJavaType() == Store.class) {
+                    Path<Object> objectPath = root.get(relatedAttributeKey[0]).get(relatedAttributeKey[1]);
+                    if (objectPath.getJavaType() == long.class) {
+                        return criteriaBuilder.equal(objectPath, criteria.getValue());
+                    }
+                }
             }
         }
         if (criteria.getOperation().equalsIgnoreCase(">")) {
