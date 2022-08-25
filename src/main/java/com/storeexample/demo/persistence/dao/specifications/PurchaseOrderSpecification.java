@@ -2,6 +2,7 @@ package com.storeexample.demo.persistence.dao.specifications;
 
 import com.storeexample.demo.persistence.model.PurchaseOrder;
 import com.storeexample.demo.persistence.model.Store;
+import com.storeexample.demo.util.StoreExampleUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -32,15 +33,15 @@ public class PurchaseOrderSpecification implements Specification<PurchaseOrder> 
             }
         }
         if (criteria.getOperation().equalsIgnoreCase(">")) {
-            if (root.get(criteria.getKey()).getJavaType() == String.class) {
+            if (root.get(criteria.getKey()).getJavaType() == ZonedDateTime.class) {
                 return criteriaBuilder.greaterThanOrEqualTo(
-                        root.get(criteria.getKey()), (String) criteria.getValue());
+                        root.get(criteria.getKey()), StoreExampleUtil.convertDate((String) criteria.getValue()));
             }
         }
         if (criteria.getOperation().equalsIgnoreCase("<")) {
-            if (root.get(criteria.getKey()).getJavaType() == String.class) {
+            if (root.get(criteria.getKey()).getJavaType() == ZonedDateTime.class) {
                 return criteriaBuilder.lessThanOrEqualTo(
-                        root.get(criteria.getKey()), (ZonedDateTime) criteria.getValue());
+                        root.get(criteria.getKey()), StoreExampleUtil.convertDate((String) criteria.getValue()));
             }
         }
         return null;
