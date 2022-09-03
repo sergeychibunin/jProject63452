@@ -2,6 +2,7 @@ package com.storeexample.demo.persistence.dao.services.interfaces;
 
 import com.storeexample.demo.persistence.model.PurchaseOrder;
 import com.storeexample.demo.persistence.model.PurchaseOrderReportProjection;
+import com.storeexample.demo.persistence.model.PurchaseOrderReportProjectionCopy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -19,4 +20,6 @@ public interface PurchaseOrderService {
     PurchaseOrder create(PurchaseOrder newOrder);
 
     List<PurchaseOrderReportProjection> getReport();
+
+    List<PurchaseOrderReportProjectionCopy> getReportCopy();
 }

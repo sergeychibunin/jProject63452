@@ -4,6 +4,7 @@ import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderSe
 import com.storeexample.demo.persistence.dao.specifications.PurchaseOrderSpecificationBuilder;
 import com.storeexample.demo.persistence.model.PurchaseOrder;
 import com.storeexample.demo.persistence.model.PurchaseOrderReportProjection;
+import com.storeexample.demo.persistence.model.PurchaseOrderReportProjectionCopy;
 import com.storeexample.demo.util.StoreExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -66,7 +67,12 @@ public class PurchaseOrderRestController {
     }
 
     @GetMapping("/purchase-order/report")
-    public List<PurchaseOrderReportProjection> get() {
+    public List<PurchaseOrderReportProjection> getReport() {
         return service.getReport();
+    }
+
+    @GetMapping("/purchase-order/report-copy")
+    public List<PurchaseOrderReportProjectionCopy> getReportCopy() {
+        return service.getReportCopy();
     }
 }
