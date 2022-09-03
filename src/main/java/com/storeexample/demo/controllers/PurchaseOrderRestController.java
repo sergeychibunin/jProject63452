@@ -1,9 +1,9 @@
 package com.storeexample.demo.controllers;
 
-import com.storeexample.demo.controllers.responses.PurchaseOrderReport;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderService;
 import com.storeexample.demo.persistence.dao.specifications.PurchaseOrderSpecificationBuilder;
 import com.storeexample.demo.persistence.model.PurchaseOrder;
+import com.storeexample.demo.persistence.model.PurchaseOrderReportProjection;
 import com.storeexample.demo.util.StoreExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.regex.Matcher;
 
 @RestController
@@ -65,7 +66,7 @@ public class PurchaseOrderRestController {
     }
 
     @GetMapping("/purchase-order/report")
-    public PurchaseOrderReport get() {
+    public List<PurchaseOrderReportProjection> get() {
         return service.getReport();
     }
 }

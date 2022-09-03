@@ -1,10 +1,10 @@
 package com.storeexample.demo.persistence.dao.services.implementations;
 
-import com.storeexample.demo.controllers.responses.PurchaseOrderReport;
 import com.storeexample.demo.exceptions.PurchaseOrderNotFoundException;
 import com.storeexample.demo.persistence.dao.repositories.PurchaseOrderRepository;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderService;
 import com.storeexample.demo.persistence.model.PurchaseOrder;
+import com.storeexample.demo.persistence.model.PurchaseOrderReportProjection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +44,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public PurchaseOrderReport getReport() {
+    public List<PurchaseOrderReportProjection> getReport() {
         return repository.getUniqueProductsInStorePerDay();
     }
 }
