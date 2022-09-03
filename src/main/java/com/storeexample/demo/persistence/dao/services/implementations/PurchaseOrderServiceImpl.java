@@ -1,5 +1,6 @@
 package com.storeexample.demo.persistence.dao.services.implementations;
 
+import com.storeexample.demo.controllers.responses.PurchaseOrderReport;
 import com.storeexample.demo.exceptions.PurchaseOrderNotFoundException;
 import com.storeexample.demo.persistence.dao.repositories.PurchaseOrderRepository;
 import com.storeexample.demo.persistence.dao.services.interfaces.PurchaseOrderService;
@@ -39,5 +40,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     public PurchaseOrder create(PurchaseOrder newOrder) {
         newOrder.setCreatedAt(ZonedDateTime.now());
         return repository.save(newOrder);
+    }
+
+    @Override
+    public PurchaseOrderReport getReport() {
+        return repository.getUniqueProductsInStorePerDay();
     }
 }
