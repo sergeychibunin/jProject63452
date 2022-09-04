@@ -71,6 +71,9 @@ public class PurchaseOrderRestController {
         return service.getReport();
     }
 
+    /**
+     * @deprecated
+     */
     @GetMapping("/purchase-order/report-copy")
     public List<PurchaseOrderReportProjectionCopy> getReportCopy() {
         return service.getReportCopy();

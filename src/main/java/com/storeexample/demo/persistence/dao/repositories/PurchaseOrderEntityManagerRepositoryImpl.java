@@ -13,17 +13,22 @@ public class PurchaseOrderEntityManagerRepositoryImpl implements PurchaseOrderEn
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * The query is incorrect.
+     * JPQL doesn't support CTE and subqueries but subqueries in WHERE, HAVING clauses only.
+     * Processing the amount field in DB side is better.
+     */
     @Override
     public List<PurchaseOrderReportProjectionCopy> getUniqueProductsInStorePerDayCopy() {
         return (List<PurchaseOrderReportProjectionCopy>) entityManager.createQuery("""
                 select distinct
-                cast(po.createdAt as date) date,
-                po.store.name storeName,
-                (select count(*) from (
-                    select distinct pop_.rssfeed from PurchaseOrderPosition pop_
-                    where pop_.order.id = po.id
-                ) _ ) amount
+                cast(po.createdAt as date) as date,
+                po.store.name as storeName,
+                t.amount
                 from PurchaseOrder po
+                join ( select _.order, count(_.rssfeed) as amount from ( 
+                    select distinct pop_.rssfeed from PurchaseOrderPosition pop_
+                ) as _ group by _.order) as t on t.order = po
                 """).getResultList();
     }
 }
